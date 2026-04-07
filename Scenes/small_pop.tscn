@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dj8a23bhreupf"]
+
+[ext_resource type="Script" uid="uid://dmwxlortv1frq" path="res://Scripts/small_pop.gd" id="1_6rrpx"]
+[ext_resource type="Texture2D" uid="uid://detyx08w6mkyi" path="res://Assets/Sprites/SpriteSheets/SparkAnim-Sheet.png" id="1_i61vo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1077"]
+atlas = ExtResource("1_i61vo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgh1o"]
+atlas = ExtResource("1_i61vo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu5m1"]
+atlas = ExtResource("1_i61vo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsyq6"]
+atlas = ExtResource("1_i61vo")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_augfd"]
+atlas = ExtResource("1_i61vo")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iiay"]
+atlas = ExtResource("1_i61vo")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6p7i"]
+atlas = ExtResource("1_i61vo")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rrpx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1077")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgh1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu5m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsyq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_augfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iiay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6p7i")
+}],
+"loop": false,
+"name": &"Explode",
+"speed": 5.0
+}]
+
+[node name="SmallPop" type="Node2D" unique_id=89459081]
+z_index = 4
+script = ExtResource("1_6rrpx")
+
+[node name="ExplodeAnim" type="AnimatedSprite2D" parent="." unique_id=1703328505]
+sprite_frames = SubResource("SpriteFrames_6rrpx")
+animation = &"Explode"
+
+[connection signal="animation_finished" from="ExplodeAnim" to="." method="_on_explode_anim_animation_finished"]

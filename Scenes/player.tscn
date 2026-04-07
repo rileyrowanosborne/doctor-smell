@@ -1,27 +1,35 @@
 [gd_scene format=3 uid="uid://dsf1epj71xx8r"]
 
 [ext_resource type="Script" uid="uid://5pfbxc6rigyk" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://b57c4p8l3q64o" path="res://Assets/Sprites/MiscSprites/Flame.png" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://dil8gi0ifao55" path="res://Scenes/projectile.tscn" id="2_vgqql"]
 [ext_resource type="PackedScene" uid="uid://b0r5pu3j8n1f8" path="res://Scenes/hurt_box.tscn" id="3_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://olvy6rdrxbri" path="res://Assets/Sprites/MiscSprites/LilFire.png" id="3_vgqql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
-radius = 11.0
+radius = 2.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6t5aa"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgqql"]
+radius = 5.0
+height = 12.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1005723831]
+z_index = 5
+z_as_relative = false
+collision_mask = 10
 script = ExtResource("1_cvnsp")
+projectile_scene = ExtResource("2_vgqql")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=648734983]
-position = Vector2(1, -14)
-texture = ExtResource("1_v0iea")
+position = Vector2(0, -8)
+texture = ExtResource("3_vgqql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1336876912]
-position = Vector2(0, -12)
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_v0iea")
 
 [node name="HurtBox" parent="." unique_id=1888837554 instance=ExtResource("3_6t5aa")]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=500064912]
-position = Vector2(0, -12)
-shape = SubResource("CircleShape2D_6t5aa")
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_vgqql")

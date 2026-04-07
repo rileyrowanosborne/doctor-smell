@@ -32,11 +32,13 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Fire"):
 		mouse_dir = get_global_mouse_position()
-		fire_projectile()
+		fire_projectile(global_position)
 
 
-func fire_projectile():
+func fire_projectile(world_location : Vector2):
 	if projectile_scene:
 		var projectile_instance = projectile_scene.instantiate()
-		add_child(projectile_instance)
-		projectile_instance.projectile_direction = mouse_dir
+		get_tree().current_scene.add_child(projectile_instance)
+		projectile_instance.projectile_direction = mouse_dir - global_position
+		projectile_instance.global_position = world_location
+		projectile_instance.rotation = get_angle_to(mouse_dir)

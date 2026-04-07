@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://1d32rbs5ex5l"]
+
+[ext_resource type="Texture2D" uid="uid://cqxgaprn0mmqd" path="res://Assets/Sprites/TileSets/MainTileSetBig.png" id="1_yfg74"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ejhf"]
+texture = ExtResource("1_yfg74")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7nhe0"]
+sources/0 = SubResource("TileSetAtlasSource_1ejhf")
+
+[node name="TileSet" type="Node2D" unique_id=1408736857]
+
+[node name="Floor" type="TileMapLayer" parent="." unique_id=1833666398]
+tile_set = SubResource("TileSet_7nhe0")
+
+[node name="Walls" type="TileMapLayer" parent="." unique_id=1885123549]
+
+[node name="Filler" type="TileMapLayer" parent="." unique_id=1059150278]
