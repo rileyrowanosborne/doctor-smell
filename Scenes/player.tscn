@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dsf1epj71xx8r"]
+
+[ext_resource type="Script" uid="uid://5pfbxc6rigyk" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://b57c4p8l3q64o" path="res://Assets/Sprites/MiscSprites/Flame.png" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://b0r5pu3j8n1f8" path="res://Scenes/hurt_box.tscn" id="3_6t5aa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6t5aa"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1005723831]
+script = ExtResource("1_cvnsp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=648734983]
+position = Vector2(1, -14)
+texture = ExtResource("1_v0iea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1336876912]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_v0iea")
+
+[node name="HurtBox" parent="." unique_id=1888837554 instance=ExtResource("3_6t5aa")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=500064912]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_6t5aa")

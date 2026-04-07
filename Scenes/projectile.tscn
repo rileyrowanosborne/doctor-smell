@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dil8gi0ifao55"]
+
+[ext_resource type="Script" uid="uid://b3g8keu7rv26p" path="res://Scripts/projectile.gd" id="1_f8cdk"]
+[ext_resource type="Texture2D" uid="uid://1vmbt4sbpkth" path="res://Assets/Sprites/MiscSprites/BaseProjectile.png" id="2_tl4hk"]
+[ext_resource type="PackedScene" uid="uid://c4dw2bgemdyjb" path="res://Scenes/hit_box.tscn" id="2_yr2qt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tl4hk"]
+radius = 3.0
+
+[node name="Projectile" type="Node2D" unique_id=1783359907]
+script = ExtResource("1_f8cdk")
+
+[node name="ProjectileSprite" type="Sprite2D" parent="." unique_id=2040920223]
+texture = ExtResource("2_tl4hk")
+
+[node name="HitBox" parent="." unique_id=1545500786 instance=ExtResource("2_yr2qt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=119511455]
+shape = SubResource("CircleShape2D_tl4hk")

@@ -1,3 +1,13 @@
 [gd_scene format=3 uid="uid://5sgn0po6b8df"]
 
+[ext_resource type="PackedScene" uid="uid://dsf1epj71xx8r" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://dil8gi0ifao55" path="res://Scenes/projectile.tscn" id="2_qxrlw"]
+
 [node name="Game" type="Node2D" unique_id=1193825920]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1830034883]
+zoom = Vector2(3, 3)
+
+[node name="Player" parent="." unique_id=1005723831 instance=ExtResource("1_ebmjs")]
+position = Vector2(-2, 4)
+projectile_scene = ExtResource("2_qxrlw")
