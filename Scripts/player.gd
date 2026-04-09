@@ -17,7 +17,17 @@ var input : Vector2
 
 func _ready() -> void:
 	add_to_group("Player")
-
+	
+	var ricochet = load("res://powerups/ricochet.tres")
+	var huge = load("res://powerups/huge.tres")
+	var mini = load("res://powerups/mini.tres")
+	
+	PlayerInfo.equip_crystal(mini)
+	PlayerInfo.equip_crystal(mini)
+	PlayerInfo.equip_crystal(ricochet)
+	
+	
+	#PlayerInfo.equip_crystal(ricochet)
 
 func get_input():
 	input.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")

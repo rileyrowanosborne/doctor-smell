@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PowerupData" format=3 uid="uid://bffbh14y1d52x"]
+
+[ext_resource type="Texture2D" uid="uid://deg5i8pwhsji6" path="res://Assets/Sprites/MiscSprites/lilRichochetProjectile.png" id="1_boqqf"]
+[ext_resource type="Script" uid="uid://dpxcey3hu3v6t" path="res://Scripts/PowerUpData.gd" id="2_0yilc"]
+
+[resource]
+script = ExtResource("2_0yilc")
+adds_bounces = 3
+projectile_texture = ExtResource("1_boqqf")

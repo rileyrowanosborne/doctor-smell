@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PowerupData" format=3 uid="uid://di2a06i0y6vkq"]
+
+[ext_resource type="Texture2D" uid="uid://cake47m60bpuq" path="res://Assets/Sprites/MiscSprites/HugeLilProjectiles.png" id="1_8gdss"]
+[ext_resource type="Script" uid="uid://dpxcey3hu3v6t" path="res://Scripts/PowerUpData.gd" id="1_shbhe"]
+
+[resource]
+script = ExtResource("1_shbhe")
+speed_multiplier = 0.7
+damage_multiplier = 2.0
+fire_rate_multiplier = 1.5
+projectile_texture = ExtResource("1_8gdss")

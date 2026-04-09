@@ -15,38 +15,17 @@ var projectile_direction : Vector2
 #base stats for projectiles
 var speed : float = 150
 var fire_rate_delay : float = .5
+var damage : float = 5.0
 var total_bounces : int = 0
-var total_max_bounces : int = 3
+var total_max_bounces : int = 0
+
 
 
 func _ready() -> void:
-	apply_powerup_modifiers()
-
-
-func apply_powerup_modifiers():
-	# Start from base values every time
-	PlayerInfo.projectile_speed = 150.0
-	PlayerInfo.projectile_damage = 5.0
-	PlayerInfo.fire_rate_delay = 0.5
-	total_max_bounces = 0
-
-	# Each powerup modifies independently — they all run
-	if PlayerInfo.is_huge:
-		PlayerInfo.projectile_speed *= 0.66
-		PlayerInfo.projectile_damage *= 2.0
-		PlayerInfo.fire_rate_delay *= 3.0
-
-	if PlayerInfo.is_mini:
-		PlayerInfo.projectile_speed *= 1.33
-		PlayerInfo.projectile_damage *= 0.5
-		PlayerInfo.fire_rate_delay *= 0.2
-
-	if PlayerInfo.can_ricochet:
-		total_max_bounces = 2
-
-	if PlayerInfo.can_explode:
-		PlayerInfo.fire_rate_delay *= 1.5
-
+	total_max_bounces = PlayerInfo.bonus_bounces
+	speed = PlayerInfo.projectile_speed
+	fire_rate_delay = PlayerInfo.fire_rate_delay
+	damage = PlayerInfo.projectile_damage
 
 
 func _physics_process(delta: float) -> void:
@@ -65,14 +44,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 func explode():
-	
-	if PlayerInfo.is_huge:
-		spawn_small_pop(global_position, Vector2(2,2))
-	elif PlayerInfo.is_mini:
-		spawn_small_pop(global_position, Vector2(.5,.5))
-	else:
-		spawn_small_pop(global_position, Vector2(1,1))
-	
+	spawn_small_pop(global_position, Vector2(1,1))
 	queue_free()
 
 
