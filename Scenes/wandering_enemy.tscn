@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cd6w7vpmk7b28" path="res://Assets/Sprites/MiscSprites/Rog.png" id="1_pevvp"]
 [ext_resource type="Script" uid="uid://8lx214mr5mr4" path="res://Scripts/wandering_enemy.gd" id="1_q0jbq"]
 [ext_resource type="PackedScene" uid="uid://b0r5pu3j8n1f8" path="res://Scenes/hurt_box.tscn" id="2_ca4o8"]
-[ext_resource type="PackedScene" uid="uid://cyg1spim2ef02" path="res://Scenes/health_component.tscn" id="4_6tads"]
 [ext_resource type="Texture2D" uid="uid://detyx08w6mkyi" path="res://Assets/Sprites/SpriteSheets/SparkAnim-Sheet.png" id="5_75f7r"]
 [ext_resource type="PackedScene" uid="uid://c4dw2bgemdyjb" path="res://Scenes/hit_box.tscn" id="6_b88ek"]
 
@@ -69,6 +68,7 @@ radius = 5.0990195
 z_index = 5
 z_as_relative = false
 collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_q0jbq")
 
 [node name="GroundPoundAnim" type="AnimatedSprite2D" parent="." unique_id=1269014971]
@@ -81,16 +81,13 @@ texture = ExtResource("1_pevvp")
 
 [node name="HurtBox" parent="." unique_id=1888837554 instance=ExtResource("2_ca4o8")]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=194167572]
 shape = SubResource("CircleShape2D_ca4o8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1080250589]
 shape = SubResource("CircleShape2D_q0jbq")
-
-[node name="HealthComponent" parent="." unique_id=1630752310 instance=ExtResource("4_6tads")]
-health = 50.0
 
 [node name="GroundPoundHitBox" parent="." unique_id=1545500786 instance=ExtResource("6_b88ek")]
 collision_layer = 0

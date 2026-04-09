@@ -9,7 +9,7 @@ extends CharacterBody2D
 var current_health : float = 150.0
 
 
-var speed : float = 250.0
+var speed : float = 200.0
 var accel : float = 8.0
 
 var input : Vector2

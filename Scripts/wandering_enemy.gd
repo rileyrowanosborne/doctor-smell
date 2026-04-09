@@ -35,6 +35,7 @@ func ground_pound():
 
 
 func take_damage():
+	print("enemy damaged")
 	current_health -= PlayerInfo.projectile_damage
 	sprite_2d.modulate = Color.CRIMSON
 	damage_timer.start()
