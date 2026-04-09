@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://c6bbeswhswboe"]
+
+[ext_resource type="Texture2D" uid="uid://cd6w7vpmk7b28" path="res://Assets/Sprites/MiscSprites/Rog.png" id="1_pevvp"]
+[ext_resource type="Script" uid="uid://8lx214mr5mr4" path="res://Scripts/wandering_enemy.gd" id="1_q0jbq"]
+[ext_resource type="PackedScene" uid="uid://b0r5pu3j8n1f8" path="res://Scenes/hurt_box.tscn" id="2_ca4o8"]
+[ext_resource type="PackedScene" uid="uid://cyg1spim2ef02" path="res://Scenes/health_component.tscn" id="4_6tads"]
+[ext_resource type="Texture2D" uid="uid://detyx08w6mkyi" path="res://Assets/Sprites/SpriteSheets/SparkAnim-Sheet.png" id="5_75f7r"]
+[ext_resource type="PackedScene" uid="uid://c4dw2bgemdyjb" path="res://Scenes/hit_box.tscn" id="6_b88ek"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b88ek"]
+atlas = ExtResource("5_75f7r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ghyn"]
+atlas = ExtResource("5_75f7r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ja4e"]
+atlas = ExtResource("5_75f7r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm5gk"]
+atlas = ExtResource("5_75f7r")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhjfg"]
+atlas = ExtResource("5_75f7r")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ea6d"]
+atlas = ExtResource("5_75f7r")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_thyp1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b88ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ghyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ja4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm5gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhjfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ea6d")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ca4o8"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q0jbq"]
+radius = 5.0990195
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6tads"]
+
+[node name="WanderingEnemy" type="CharacterBody2D" unique_id=1664308811]
+z_index = 5
+z_as_relative = false
+collision_layer = 4
+script = ExtResource("1_q0jbq")
+
+[node name="GroundPoundAnim" type="AnimatedSprite2D" parent="." unique_id=1269014971]
+modulate = Color(0.56705886, 0.17638016, 0.23388603, 1)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_thyp1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1052772099]
+texture = ExtResource("1_pevvp")
+
+[node name="HurtBox" parent="." unique_id=1888837554 instance=ExtResource("2_ca4o8")]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=194167572]
+shape = SubResource("CircleShape2D_ca4o8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1080250589]
+shape = SubResource("CircleShape2D_q0jbq")
+
+[node name="HealthComponent" parent="." unique_id=1630752310 instance=ExtResource("4_6tads")]
+health = 50.0
+
+[node name="GroundPoundHitBox" parent="." unique_id=1545500786 instance=ExtResource("6_b88ek")]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundPoundHitBox" unique_id=276247202]
+shape = SubResource("CircleShape2D_6tads")
+
+[node name="AttackDelayTimer" type="Timer" parent="." unique_id=1742267511]
+one_shot = true
+
+[node name="DamageTimer" type="Timer" parent="." unique_id=1564221245]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="animation_finished" from="GroundPoundAnim" to="." method="_on_ground_pound_anim_animation_finished"]
+[connection signal="timeout" from="AttackDelayTimer" to="." method="_on_attack_delay_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

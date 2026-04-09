@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dsf1epj71xx8r"]
 
 [ext_resource type="Script" uid="uid://5pfbxc6rigyk" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="PackedScene" uid="uid://dil8gi0ifao55" path="res://Scenes/projectile.tscn" id="2_vgqql"]
 [ext_resource type="PackedScene" uid="uid://b0r5pu3j8n1f8" path="res://Scenes/hurt_box.tscn" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://olvy6rdrxbri" path="res://Assets/Sprites/MiscSprites/LilFire.png" id="3_vgqql"]
+[ext_resource type="PackedScene" uid="uid://c5txthwrwhx6s" path="res://Scenes/lil_hands.tscn" id="5_fkybt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
 radius = 2.0
@@ -17,13 +17,13 @@ z_index = 5
 z_as_relative = false
 collision_mask = 10
 script = ExtResource("1_cvnsp")
-projectile_scene = ExtResource("2_vgqql")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=648734983]
 position = Vector2(0, -8)
 texture = ExtResource("3_vgqql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1336876912]
+visible = false
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_v0iea")
 
@@ -31,5 +31,16 @@ shape = SubResource("CircleShape2D_v0iea")
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=500064912]
+visible = false
 position = Vector2(0, -6)
 shape = SubResource("CapsuleShape2D_vgqql")
+
+[node name="LilHands" parent="." unique_id=570133942 instance=ExtResource("5_fkybt")]
+position = Vector2(0, -7)
+is_mini = true
+
+[node name="DamageTimer" type="Timer" parent="." unique_id=851315496]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
