@@ -7,3 +7,6 @@ extends Resource
 @export var adds_bounces : int = 0
 @export var adds_explosion : bool = false
 @export var adds_homing : bool = false
+
+
+@export var projectile_texture : CompressedTexture2D

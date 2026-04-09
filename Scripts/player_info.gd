@@ -5,16 +5,11 @@ extends Node
 var fire_rate_delay : float = .5
 var projectile_speed : float = 150.0
 var projectile_damage : float = 5.0
+var bonus_bounces : int = 0
+var projectile_texture : CompressedTexture2D
 
 
 
-var is_huge : bool = false
-var is_mini : bool = false
-var is_shotgun : bool = false
-var can_ricochet : bool = false
-var can_explode : bool = false
-var can_pierce : bool = false
-var can_zap : bool = false
 
 
 
@@ -29,12 +24,14 @@ func recalculate_stats():
 	projectile_speed = 150.0
 	projectile_damage = 5.0
 	fire_rate_delay = 0.5
-	
-	for p in active_powerups:
-		projectile_speed *= p.speed_multiplier
-		projectile_damage *= p.damage_multiplier
-		fire_rate_delay *= p.fire_rate_multiplier
+	bonus_bounces = 0  # reset each time
 
+	for crystal in crystal_slots:
+		projectile_speed *= crystal.speed_multiplier
+		projectile_damage *= crystal.damage_multiplier
+		fire_rate_delay *= crystal.fire_rate_multiplier
+		bonus_bounces += crystal.adds_bounces
+		projectile_texture = crystal.projectile_texture
 
 
 

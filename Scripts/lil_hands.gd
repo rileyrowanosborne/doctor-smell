@@ -30,14 +30,6 @@ var on_delay : bool = false
 
 
 
-func update_enhancements():
-	PlayerInfo.is_huge = is_huge
-	PlayerInfo.is_mini = is_mini
-	PlayerInfo.can_explode = can_explode
-	PlayerInfo.is_shotgun = is_shotgun
-	PlayerInfo.can_ricochet = can_ricochet
-	PlayerInfo.can_zap = can_zap
-
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("Fire") and not on_delay:
@@ -49,9 +41,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_released("Fire"):
 		fire_held = false
 
-
-func _ready() -> void:
-	update_enhancements()
 
 
 
