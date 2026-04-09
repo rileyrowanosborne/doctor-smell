@@ -1,0 +1,8 @@
+extends Node
+
+signal mini_crystal_collected
+signal huge_crystal_collected
+signal ricochet_crystal_collected
+signal explosive_crystal_collected
+signal electro_crystal_collected
+signal homing_crystal_collected

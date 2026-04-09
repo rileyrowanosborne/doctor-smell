@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://b2ahohsm6tckp"]
+
+[ext_resource type="Texture2D" uid="uid://rjog5ekdg78p" path="res://Assets/Sprites/MiscSprites/Hand.png" id="1_hvjoq"]
+[ext_resource type="Script" uid="uid://bsbayhl4iovq0" path="res://Scripts/power_up_select_screen.gd" id="1_pdhcd"]
+[ext_resource type="Texture2D" uid="uid://e7tkkr87prj2" path="res://Assets/Sprites/MiscSprites/DullCrystal.png" id="2_5h5ft"]
+[ext_resource type="Theme" uid="uid://dj0r3i8h3yp1o" path="res://Assets/MainTextTheme.tres" id="3_1loms"]
+[ext_resource type="FontFile" uid="uid://chau8imjcaf1t" path="res://Assets/Sprites/Fonts/Qager copy.ttf" id="4_3niai"]
+[ext_resource type="Script" uid="uid://bqxt1yk487hbh" path="res://Scripts/inventory_hud.gd" id="6_c1p2a"]
+
+[sub_resource type="Theme" id="Theme_pdhcd"]
+default_font = ExtResource("4_3niai")
+default_font_size = 32
+
+[node name="PowerUpSelectScreen" type="Control" unique_id=1666021937]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pdhcd")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=43011813]
+layout_mode = 0
+offset_left = -6.1035156e-05
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.2290161, 0.27461067, 0.362623, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1547366864]
+position = Vector2(808.00006, 360)
+scale = Vector2(6, 6)
+texture = ExtResource("1_hvjoq")
+
+[node name="Crystal1" type="TextureButton" parent="." unique_id=1280073888]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 405.0
+offset_right = 744.0
+offset_bottom = 445.0
+scale = Vector2(2.5, 2.5)
+toggle_mode = true
+texture_normal = ExtResource("2_5h5ft")
+stretch_mode = 0
+
+[node name="Crystal2" type="TextureButton" parent="." unique_id=1614302675]
+layout_mode = 0
+offset_left = 795.0
+offset_top = 337.0
+offset_right = 835.0
+offset_bottom = 377.0
+scale = Vector2(2.5, 2.5)
+toggle_mode = true
+texture_normal = ExtResource("2_5h5ft")
+stretch_mode = 0
+
+[node name="Crystal3" type="TextureButton" parent="." unique_id=882636810]
+layout_mode = 0
+offset_left = 888.99994
+offset_top = 389.0
+offset_right = 928.99994
+offset_bottom = 429.0
+scale = Vector2(2.5, 2.5)
+toggle_mode = true
+texture_normal = ExtResource("2_5h5ft")
+stretch_mode = 0
+
+[node name="Crystal4" type="TextureButton" parent="." unique_id=1996551407]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 472.0
+offset_right = 840.0
+offset_bottom = 512.0
+scale = Vector2(2.5, 2.5)
+toggle_mode = true
+texture_normal = ExtResource("2_5h5ft")
+stretch_mode = 0
+
+[node name="MainText" type="RichTextLabel" parent="." unique_id=915296886]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 36.0
+offset_right = 662.0
+offset_bottom = 252.0
+theme = ExtResource("3_1loms")
+theme_override_colors/default_color = Color(0.63529414, 0.62352943, 0.5568628, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.11764706)
+theme_override_constants/shadow_offset_x = 20
+theme_override_constants/shadow_offset_y = 20
+text = "CRYSTAL COLLECTION"
+
+[node name="ItemList" type="ItemList" parent="." unique_id=1544550343]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 263.0
+offset_right = 495.0
+offset_bottom = 605.0
+theme = SubResource("Theme_pdhcd")
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+theme_override_constants/line_separation = 10
+theme_override_constants/icon_margin = 20
+icon_scale = 4.0
+script = ExtResource("6_c1p2a")
+
+[connection signal="toggled" from="Crystal1" to="ItemList" method="_on_crystal_1_toggled"]
+[connection signal="toggled" from="Crystal2" to="ItemList" method="_on_crystal_2_toggled"]
+[connection signal="toggled" from="Crystal3" to="ItemList" method="_on_crystal_3_toggled"]
+[connection signal="toggled" from="Crystal4" to="ItemList" method="_on_crystal_4_toggled"]
+[connection signal="item_selected" from="ItemList" to="ItemList" method="_on_item_selected"]

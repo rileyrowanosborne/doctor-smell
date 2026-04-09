@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerInfo="*uid://dhtdstka7kl0m"
+GameSignals="*uid://b0r6t1a36fy83"
 
 [display]
 

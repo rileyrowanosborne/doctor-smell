@@ -16,7 +16,7 @@ var projectile_texture : CompressedTexture2D
 var active_powerups : Array[PowerupData] = []
 
 
-const MAX_SLOTS = 3
+const MAX_SLOTS = 4
 var crystal_slots : Array[PowerupData] = []
 
 
