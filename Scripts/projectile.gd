@@ -5,21 +5,7 @@ extends RigidBody2D
 #nodes
 @onready var projectile_sprite : Sprite2D = $ProjectileSprite
 
-
-
-#assets
-	#Base projectiles
-const HUGE_LIL_PROJECTILES = preload("uid://cake47m60bpuq")
-const LIL_PROJECTILE = preload("uid://dncwug0u8gsp0")
-const LIL_LIL_PROJECTILE = preload("uid://6ecuv1y6uheh")
-	
-	#Ricochet projectiles
-const LIL_LIL_RICOCHET_PROJECTILE = preload("uid://cmw1xcedfsuc8")
-const LIL_RICHOCHET_PROJECTILE = preload("uid://deg5i8pwhsji6")
-const RICOCHET_PROJECTILE = preload("uid://r554hp13km8q")
-
-
-
+#scenes to instantiate
 @export var small_pop_scene : PackedScene
 
 
@@ -34,37 +20,32 @@ var total_max_bounces : int = 3
 
 
 func _ready() -> void:
-	projectile_type()
+	apply_powerup_modifiers()
 
 
-func projectile_type():
+func apply_powerup_modifiers():
+	# Start from base values every time
+	PlayerInfo.projectile_speed = 150.0
+	PlayerInfo.projectile_damage = 5.0
+	PlayerInfo.fire_rate_delay = 0.5
+	total_max_bounces = 0
+
+	# Each powerup modifies independently — they all run
 	if PlayerInfo.is_huge:
-		PlayerInfo.fire_rate_delay = 1.5
-		PlayerInfo.projectile_speed = 100.0
-		PlayerInfo.projectile_damage = 10
-	
-	elif PlayerInfo.is_mini:
-		PlayerInfo.fire_rate_delay = .1
-		PlayerInfo.projectile_speed = 200.0
-		PlayerInfo.projectile_damage = 2.5
-	
-	elif PlayerInfo.can_explode:
-		PlayerInfo.fire_rate_delay = .75
-	
-	elif PlayerInfo.can_ricochet:
-		PlayerInfo.projectile_damage = 5
-		PlayerInfo.fire_rate_delay = .5
-		PlayerInfo.projectile_speed = 150.0
-	
-	else:
-		PlayerInfo.projectile_damage = 5
-		PlayerInfo.fire_rate_delay = .5
-		PlayerInfo.projectile_speed = 150.0
-	
+		PlayerInfo.projectile_speed *= 0.66
+		PlayerInfo.projectile_damage *= 2.0
+		PlayerInfo.fire_rate_delay *= 3.0
+
+	if PlayerInfo.is_mini:
+		PlayerInfo.projectile_speed *= 1.33
+		PlayerInfo.projectile_damage *= 0.5
+		PlayerInfo.fire_rate_delay *= 0.2
+
 	if PlayerInfo.can_ricochet:
 		total_max_bounces = 2
-	else: 
-		total_max_bounces = 0
+
+	if PlayerInfo.can_explode:
+		PlayerInfo.fire_rate_delay *= 1.5
 
 
 

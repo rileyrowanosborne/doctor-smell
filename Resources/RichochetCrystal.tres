@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PowerupData" format=3 uid="uid://bffbh14y1d52x"]
+
+[ext_resource type="Script" uid="uid://dpxcey3hu3v6t" path="res://Scripts/PowerUpData.gd" id="1_dflwn"]
+
+[resource]
+script = ExtResource("1_dflwn")
+adds_bounces = 3
