@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://b0kxpqljs5mrc"]
+
+[ext_resource type="FontFile" uid="uid://chau8imjcaf1t" path="res://Assets/Sprites/Fonts/Qager copy.ttf" id="1_57sou"]
+
+[resource]
+default_font = ExtResource("1_57sou")
+default_font_size = 32

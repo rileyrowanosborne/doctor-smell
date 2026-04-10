@@ -6,3 +6,19 @@ signal ricochet_crystal_collected
 signal explosive_crystal_collected
 signal electro_crystal_collected
 signal homing_crystal_collected
+
+
+signal mini_crystal_equipped
+signal huge_crystal_equipped
+signal ricochet_crystal_equipped
+signal explosive_crystal_equipped
+signal electro_crystal_equipped
+signal homing_crystal_equipped
+
+
+signal mini_crystal_unequipped
+signal huge_crystal_unequipped
+signal ricochet_crystal_unequipped
+signal explosive_crystal_unequipped
+signal electro_crystal_unequipped
+signal homing_crystal_unequipped

@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://b6exyk1s1b4tf"]
+
+[ext_resource type="Script" uid="uid://dua3p55xx1cnt" path="res://Scripts/power_up_select_screen_2.gd" id="1_wv08c"]
+[ext_resource type="Texture2D" uid="uid://rjog5ekdg78p" path="res://Assets/Sprites/MiscSprites/Hand.png" id="1_x6xc7"]
+[ext_resource type="Theme" uid="uid://dj0r3i8h3yp1o" path="res://Assets/MainTextTheme.tres" id="2_wv08c"]
+[ext_resource type="FontFile" uid="uid://chau8imjcaf1t" path="res://Assets/Sprites/Fonts/Qager copy.ttf" id="3_0yrxi"]
+[ext_resource type="Theme" uid="uid://cenvngnca1gpv" path="res://Scenes/button_theme.tres" id="4_r2f1b"]
+[ext_resource type="Theme" uid="uid://b0kxpqljs5mrc" path="res://Scenes/item_list_theme.tres" id="5_r2f1b"]
+
+[sub_resource type="Theme" id="Theme_u0nfn"]
+default_font = ExtResource("3_0yrxi")
+default_font_size = 64
+
+[sub_resource type="Theme" id="Theme_r2f1b"]
+default_font = ExtResource("3_0yrxi")
+default_font_size = 64
+
+[node name="PowerUpSelectScreen2" type="Control" unique_id=103884151]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wv08c")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=768087760]
+layout_mode = 0
+offset_left = -6.1035156e-05
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.2290161, 0.27461067, 0.362623, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1618638534]
+layout_mode = 0
+offset_left = 426.0
+offset_top = -2.0
+offset_right = 522.0
+offset_bottom = 94.0
+scale = Vector2(3, 3)
+texture = ExtResource("1_x6xc7")
+flip_h = true
+flip_v = true
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=817333989]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 362.0
+offset_right = 299.0
+offset_bottom = 458.0
+scale = Vector2(3, 3)
+texture = ExtResource("1_x6xc7")
+flip_h = true
+
+[node name="MainText" type="RichTextLabel" parent="." unique_id=1457724948]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 427.0
+offset_right = 1123.0
+offset_bottom = 643.0
+theme = ExtResource("2_wv08c")
+theme_override_colors/default_color = Color(0.63529414, 0.62352943, 0.5568628, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.11764706)
+theme_override_constants/shadow_offset_x = 20
+theme_override_constants/shadow_offset_y = 20
+text = "CRYSTAL COLLECTION"
+horizontal_alignment = 2
+
+[node name="MainText2" type="RichTextLabel" parent="." unique_id=1826338545]
+layout_mode = 0
+offset_left = 791.0
+offset_top = 36.0
+offset_right = 1116.0
+offset_bottom = 123.0
+theme = SubResource("Theme_u0nfn")
+theme_override_colors/default_color = Color(0.63529414, 0.62352943, 0.5568628, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.11764706)
+theme_override_constants/shadow_offset_x = 20
+theme_override_constants/shadow_offset_y = 20
+text = "Equipped"
+horizontal_alignment = 2
+
+[node name="MainText3" type="RichTextLabel" parent="." unique_id=400940164]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 30.0
+offset_right = 390.0
+offset_bottom = 117.0
+theme = SubResource("Theme_u0nfn")
+theme_override_colors/default_color = Color(0.63529414, 0.62352943, 0.5568628, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.11764706)
+theme_override_constants/shadow_offset_x = 20
+theme_override_constants/shadow_offset_y = 20
+text = "Inventory"
+
+[node name="InventoryList" type="ItemList" parent="." unique_id=1902644130]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 134.0
+offset_right = 519.0
+offset_bottom = 343.0
+theme = ExtResource("5_r2f1b")
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+theme_override_constants/line_separation = 10
+theme_override_constants/icon_margin = 20
+
+[node name="EquippedList" type="ItemList" parent="." unique_id=921700191]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 134.0
+offset_right = 1119.0
+offset_bottom = 343.0
+theme = ExtResource("5_r2f1b")
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+theme_override_constants/line_separation = 10
+theme_override_constants/icon_margin = 20
+
+[node name="Equip" type="Button" parent="." unique_id=576504119]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 364.0
+offset_right = 135.0
+offset_bottom = 404.0
+theme = ExtResource("4_r2f1b")
+text = "equip"
+
+[node name="Unequip" type="Button" parent="." unique_id=88691115]
+layout_mode = 0
+offset_left = 971.0
+offset_top = 370.0
+offset_right = 1115.0
+offset_bottom = 410.0
+theme = ExtResource("4_r2f1b")
+text = "unequip"
+
+[node name="Resume" type="Button" parent="." unique_id=1693864964]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 380.0
+offset_right = 705.0
+offset_bottom = 452.0
+theme = SubResource("Theme_r2f1b")
+text = "RESUME"
+
+[connection signal="item_selected" from="InventoryList" to="." method="_on_inventory_list_item_selected"]
+[connection signal="item_selected" from="EquippedList" to="." method="_on_equipped_list_item_selected"]
+[connection signal="pressed" from="Equip" to="." method="_on_equip_pressed"]
+[connection signal="pressed" from="Unequip" to="." method="_on_unequip_pressed"]
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]

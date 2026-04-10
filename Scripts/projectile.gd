@@ -18,6 +18,7 @@ var fire_rate_delay : float = .5
 var damage : float = 5.0
 var total_bounces : int = 0
 var total_max_bounces : int = 0
+var texture : CompressedTexture2D
 
 
 
@@ -26,6 +27,7 @@ func _ready() -> void:
 	speed = PlayerInfo.projectile_speed
 	fire_rate_delay = PlayerInfo.fire_rate_delay
 	damage = PlayerInfo.projectile_damage
+	
 
 
 func _physics_process(delta: float) -> void:

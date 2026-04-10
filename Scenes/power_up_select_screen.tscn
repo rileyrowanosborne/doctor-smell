@@ -1,15 +1,10 @@
 [gd_scene format=3 uid="uid://b2ahohsm6tckp"]
 
 [ext_resource type="Texture2D" uid="uid://rjog5ekdg78p" path="res://Assets/Sprites/MiscSprites/Hand.png" id="1_hvjoq"]
-[ext_resource type="Script" uid="uid://bsbayhl4iovq0" path="res://Scripts/power_up_select_screen.gd" id="1_pdhcd"]
 [ext_resource type="Texture2D" uid="uid://e7tkkr87prj2" path="res://Assets/Sprites/MiscSprites/DullCrystal.png" id="2_5h5ft"]
 [ext_resource type="Theme" uid="uid://dj0r3i8h3yp1o" path="res://Assets/MainTextTheme.tres" id="3_1loms"]
-[ext_resource type="FontFile" uid="uid://chau8imjcaf1t" path="res://Assets/Sprites/Fonts/Qager copy.ttf" id="4_3niai"]
+[ext_resource type="Theme" uid="uid://b0kxpqljs5mrc" path="res://Scenes/item_list_theme.tres" id="4_3niai"]
 [ext_resource type="Script" uid="uid://bqxt1yk487hbh" path="res://Scripts/inventory_hud.gd" id="6_c1p2a"]
-
-[sub_resource type="Theme" id="Theme_pdhcd"]
-default_font = ExtResource("4_3niai")
-default_font_size = 32
 
 [node name="PowerUpSelectScreen" type="Control" unique_id=1666021937]
 layout_mode = 3
@@ -18,7 +13,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pdhcd")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=43011813]
 layout_mode = 0
@@ -34,10 +28,10 @@ texture = ExtResource("1_hvjoq")
 
 [node name="Crystal1" type="TextureButton" parent="." unique_id=1280073888]
 layout_mode = 0
-offset_left = 704.0
-offset_top = 405.0
-offset_right = 744.0
-offset_bottom = 445.0
+offset_left = 705.0
+offset_top = 400.0
+offset_right = 745.0
+offset_bottom = 440.0
 scale = Vector2(2.5, 2.5)
 toggle_mode = true
 texture_normal = ExtResource("2_5h5ft")
@@ -45,10 +39,10 @@ stretch_mode = 0
 
 [node name="Crystal2" type="TextureButton" parent="." unique_id=1614302675]
 layout_mode = 0
-offset_left = 795.0
-offset_top = 337.0
-offset_right = 835.0
-offset_bottom = 377.0
+offset_left = 797.0
+offset_top = 335.00003
+offset_right = 837.0
+offset_bottom = 375.00003
 scale = Vector2(2.5, 2.5)
 toggle_mode = true
 texture_normal = ExtResource("2_5h5ft")
@@ -92,10 +86,10 @@ text = "CRYSTAL COLLECTION"
 [node name="ItemList" type="ItemList" parent="." unique_id=1544550343]
 layout_mode = 0
 offset_left = 47.0
-offset_top = 263.0
-offset_right = 495.0
+offset_top = 282.0
+offset_right = 477.0
 offset_bottom = 605.0
-theme = SubResource("Theme_pdhcd")
+theme = ExtResource("4_3niai")
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 theme_override_constants/line_separation = 10

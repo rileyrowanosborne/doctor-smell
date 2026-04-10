@@ -6,7 +6,7 @@ var fire_rate_delay : float = .5
 var projectile_speed : float = 150.0
 var projectile_damage : float = 5.0
 var bonus_bounces : int = 0
-var projectile_texture : CompressedTexture2D
+var projectile_texture : CompressedTexture2D = preload("res://Assets/Sprites/MiscSprites/LilProjectile.png")
 
 
 
@@ -24,7 +24,8 @@ func recalculate_stats():
 	projectile_speed = 150.0
 	projectile_damage = 5.0
 	fire_rate_delay = 0.5
-	bonus_bounces = 0  # reset each time
+	bonus_bounces = 0
+	projectile_texture = projectile_texture  # reset each time
 
 	for crystal in crystal_slots:
 		projectile_speed *= crystal.speed_multiplier

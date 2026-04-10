@@ -18,7 +18,6 @@ var input : Vector2
 func _ready() -> void:
 	add_to_group("Player")
 	
-	
 
 func get_input():
 	input.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
