@@ -30,38 +30,45 @@ var homing
 
 
 func _ready() -> void:
+	equip.disabled = true
+	unequip.disabled = true
+	
+	equipped_list.clear()
+	inventory_list.clear()
 	
 	if PlayerInventory.inventory_name.is_empty():
-		print("nothing to repopulate")
+		print("nothing in inventory")
 	else:
-		if PlayerInventory.inventory_name.has("MINI CRYSTAL"):
-			inventory_list.add_item("MINI CRYSTAL", GREEN_CRYSTAL, true)
-		if PlayerInventory.inventory_name.has("HUGE CRYSTAL"):
-			inventory_list.add_item("HUGE CRYSTAL", RED_CRYSTAL, true)
-		if PlayerInventory.inventory_name.has("RICOCHET CRYSTAL"):
-			inventory_list.add_item("RICOCHET CRYSTAL", ORANGE_CRYSTAL, true)
-		if PlayerInventory.inventory_name.has("EXPLOSIVE CRYSTAL"):
-			inventory_list.add_item("EXPLOSIVE CRYSTAL", MAJOR_CRYSTAL, true)
-		if PlayerInventory.inventory_name.has("ELECTRO CRYSTAL"):
-			inventory_list.add_item("ELECTRO CRYSTAL", YELLOW_CRYSTAL, true)
-		if PlayerInventory.inventory_name.has("HOMING CRYSTAL"):
-			inventory_list.add_item("HOMING CRYSTAL", DULL_CRYSTAL, true)
+		for inv_name in PlayerInventory.inventory_name:
+			if PlayerInventory.inventory_name.has("MINI CRYSTAL"):
+				inventory_list.add_item("MINI CRYSTAL", GREEN_CRYSTAL, true)
+			if PlayerInventory.inventory_name.has("HUGE CRYSTAL"):
+				inventory_list.add_item("HUGE CRYSTAL", RED_CRYSTAL, true)
+			if PlayerInventory.inventory_name.has("RICOCHET CRYSTAL"):
+				inventory_list.add_item("RICOCHET CRYSTAL", ORANGE_CRYSTAL, true)
+			if PlayerInventory.inventory_name.has("EXPLOSIVE CRYSTAL"):
+				inventory_list.add_item("EXPLOSIVE CRYSTAL", MAJOR_CRYSTAL, true)
+			if PlayerInventory.inventory_name.has("ELECTRO CRYSTAL"):
+				inventory_list.add_item("ELECTRO CRYSTAL", YELLOW_CRYSTAL, true)
+			if PlayerInventory.inventory_name.has("HOMING CRYSTAL"):
+				inventory_list.add_item("HOMING CRYSTAL", DULL_CRYSTAL, true)
 	
 	if PlayerInventory.equipped_name.is_empty():
 		print("nothing equipped")
 	else:
-		if PlayerInventory.equipped_name.has("MINI CRYSTAL"):
-			equipped_list.add_item("MINI CRYSTAL", GREEN_CRYSTAL, true)
-		if PlayerInventory.equipped_name.has("HUGE CRYSTAL"):
-			equipped_list.add_item("HUGE CRYSTAL", RED_CRYSTAL, true)
-		if PlayerInventory.equipped_name.has("RICOCHET CRYSTAL"):
-			equipped_list.add_item("RICOCHET CRYSTAL", ORANGE_CRYSTAL, true)
-		if PlayerInventory.equipped_name.has("EXPLOSIVE CRYSTAL"):
-			equipped_list.add_item("EXPLOSIVE CRYSTAL", MAJOR_CRYSTAL, true)
-		if PlayerInventory.equipped_name.has("ELECTRO CRYSTAL"):
-			equipped_list.add_item("ELECTRO CRYSTAL", YELLOW_CRYSTAL, true)
-		if PlayerInventory.equipped_name.has("HOMING CRYSTAL"):
-			equipped_list.add_item("HOMING CRYSTAL", DULL_CRYSTAL, true)
+		for equ_name in PlayerInventory.equipped_name:
+			if PlayerInventory.equipped_name.has("MINI CRYSTAL"):
+				equipped_list.add_item("MINI CRYSTAL", GREEN_CRYSTAL, true)
+			elif PlayerInventory.equipped_name.has("HUGE CRYSTAL"):
+				equipped_list.add_item("HUGE CRYSTAL", RED_CRYSTAL, true)
+			elif PlayerInventory.equipped_name.has("RICOCHET CRYSTAL"):
+				equipped_list.add_item("RICOCHET CRYSTAL", ORANGE_CRYSTAL, true)
+			elif PlayerInventory.equipped_name.has("EXPLOSIVE CRYSTAL"):
+				equipped_list.add_item("EXPLOSIVE CRYSTAL", MAJOR_CRYSTAL, true)
+			elif PlayerInventory.equipped_name.has("ELECTRO CRYSTAL"):
+				equipped_list.add_item("ELECTRO CRYSTAL", YELLOW_CRYSTAL, true)
+			elif PlayerInventory.equipped_name.has("HOMING CRYSTAL"):
+				equipped_list.add_item("HOMING CRYSTAL", DULL_CRYSTAL, true)
 	
 	GameSignals.connect("mini_crystal_collected", add_mini_crystal)
 	GameSignals.connect("huge_crystal_collected", add_huge_crystal)
@@ -81,28 +88,22 @@ func _input(event: InputEvent) -> void:
 
 
 func add_mini_crystal():
-	PlayerInventory.inventory_name.append("MINI CRYSTAL")
 	inventory_list.add_item("MINI CRYSTAL", GREEN_CRYSTAL, true)
 
 func add_ricochet_crystal():
-	PlayerInventory.inventory_name.append("RICOCHET CRYSTAL")
 	inventory_list.add_item("RICOCHET CRYSTAL", ORANGE_CRYSTAL, true)
 
 func add_huge_crystal():
-	PlayerInventory.inventory_name.append("HUGE CRYSTAL")
 	inventory_list.add_item("HUGE CRYSTAL", RED_CRYSTAL, true)
 
 
 func add_explosive_crystal():
-	PlayerInventory.inventory_name.append("EXPLOSIVE CRYSTAL")
 	inventory_list.add_item("EXPLOSIVE CRYSTAL", MAJOR_CRYSTAL, true)
 
 func add_electro_crystal():
-	PlayerInventory.inventory_name.append("EXPLOSIVE CRYSTAL")
 	inventory_list.add_item("ELECTRO CRYSTAL", YELLOW_CRYSTAL, true)
 
 func add_homing_crystal():
-	PlayerInventory.inventory_name.append("HOMING CRYSTAL")
 	inventory_list.add_item("HOMING CRYSTAL", DULL_CRYSTAL, true )
 
 
@@ -118,6 +119,7 @@ func _on_inventory_list_item_selected(index: int) -> void:
 
 
 func _on_equip_pressed() -> void:
+	equip.disabled = true
 	
 	if equipped_list.item_count < 3:
 		equipped_list.add_item(selected_item_name, selected_item_texture, true)
@@ -126,17 +128,17 @@ func _on_equip_pressed() -> void:
 		if selected_item_name == "MINI CRYSTAL":
 			PlayerInfo.equip_crystal(mini)
 			PlayerInventory.equipped_name.append( "MINI CRYSTAL")
-		elif selected_item_name == "HUGE CRYSTAL":
+		if selected_item_name == "HUGE CRYSTAL":
 			PlayerInfo.equip_crystal(huge)
 			PlayerInventory.equipped_name.append("HUGE CRYSTAL")
-		elif selected_item_name == "RICOCHET CRYSTAL":
+		if selected_item_name == "RICOCHET CRYSTAL":
 			PlayerInfo.equip_crystal(ricochet)
 			PlayerInventory.equipped_name.append("RICOCHET CRYSTAL")
-		elif selected_item_name == "EXPLOSIVE CRYSTAL":
+		if selected_item_name == "EXPLOSIVE CRYSTAL":
 			PlayerInventory.equipped_name.append("EXPLOSIVE CRYSTAL")
-		elif selected_item_name == "ELECTRO CRYSTAL":
+		if selected_item_name == "ELECTRO CRYSTAL":
 			PlayerInventory.equipped_name.append("ELECTRO CRYSTAL")
-		elif selected_item_name == "HOMING CRYSTAL":
+		if selected_item_name == "HOMING CRYSTAL":
 			PlayerInventory.equipped_name.append("HOMING CRYSTAL")
 		
 
@@ -151,6 +153,8 @@ func _on_equipped_list_item_selected(index: int) -> void:
 
 
 func _on_unequip_pressed() -> void:
+	unequip.disabled = true
+	
 	inventory_list.add_item(selected_item_name, selected_item_texture, true)
 	equipped_list.remove_item(selected_item_index)
 	
