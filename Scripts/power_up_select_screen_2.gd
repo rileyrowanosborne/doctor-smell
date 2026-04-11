@@ -42,15 +42,15 @@ func _ready() -> void:
 		for inv_name in PlayerInventory.inventory_name:
 			if PlayerInventory.inventory_name.has("MINI CRYSTAL"):
 				inventory_list.add_item("MINI CRYSTAL", GREEN_CRYSTAL, true)
-			if PlayerInventory.inventory_name.has("HUGE CRYSTAL"):
+			elif PlayerInventory.inventory_name.has("HUGE CRYSTAL"):
 				inventory_list.add_item("HUGE CRYSTAL", RED_CRYSTAL, true)
-			if PlayerInventory.inventory_name.has("RICOCHET CRYSTAL"):
+			elif PlayerInventory.inventory_name.has("RICOCHET CRYSTAL"):
 				inventory_list.add_item("RICOCHET CRYSTAL", ORANGE_CRYSTAL, true)
-			if PlayerInventory.inventory_name.has("EXPLOSIVE CRYSTAL"):
+			elif PlayerInventory.inventory_name.has("EXPLOSIVE CRYSTAL"):
 				inventory_list.add_item("EXPLOSIVE CRYSTAL", MAJOR_CRYSTAL, true)
-			if PlayerInventory.inventory_name.has("ELECTRO CRYSTAL"):
+			elif PlayerInventory.inventory_name.has("ELECTRO CRYSTAL"):
 				inventory_list.add_item("ELECTRO CRYSTAL", YELLOW_CRYSTAL, true)
-			if PlayerInventory.inventory_name.has("HOMING CRYSTAL"):
+			elif PlayerInventory.inventory_name.has("HOMING CRYSTAL"):
 				inventory_list.add_item("HOMING CRYSTAL", DULL_CRYSTAL, true)
 	
 	if PlayerInventory.equipped_name.is_empty():
@@ -89,22 +89,28 @@ func _input(event: InputEvent) -> void:
 
 func add_mini_crystal():
 	inventory_list.add_item("MINI CRYSTAL", GREEN_CRYSTAL, true)
+	PlayerInventory.inventory_name.append("MINI CRYSTAL")
 
 func add_ricochet_crystal():
 	inventory_list.add_item("RICOCHET CRYSTAL", ORANGE_CRYSTAL, true)
+	PlayerInventory.inventory_name.append("RICOCHET CRYSTAL")
 
 func add_huge_crystal():
 	inventory_list.add_item("HUGE CRYSTAL", RED_CRYSTAL, true)
+	PlayerInventory.inventory_name.append("HUGE CRYSTAL")
 
 
 func add_explosive_crystal():
 	inventory_list.add_item("EXPLOSIVE CRYSTAL", MAJOR_CRYSTAL, true)
+	PlayerInventory.inventory_name.append("EXPLOSIVE CRYSTAL")
 
 func add_electro_crystal():
 	inventory_list.add_item("ELECTRO CRYSTAL", YELLOW_CRYSTAL, true)
+	PlayerInventory.inventory_name.append("ELECTRO CRYSTAL")
 
 func add_homing_crystal():
-	inventory_list.add_item("HOMING CRYSTAL", DULL_CRYSTAL, true )
+	inventory_list.add_item("HOMING CRYSTAL", DULL_CRYSTAL, true)
+	PlayerInventory.inventory_name.append("HOMING CRYSTAL")
 
 
 
@@ -161,6 +167,10 @@ func _on_unequip_pressed() -> void:
 	PlayerInfo.unequip_crystal(selected_item_index)
 	PlayerInventory.equipped_name.erase(selected_item_name)
 
+
+
+func save_crystals():
+	PlayerInventory.equipped_name
 
 func _on_resume_pressed() -> void:
 	
